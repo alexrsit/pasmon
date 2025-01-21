@@ -13,6 +13,13 @@ func InitRoutes(client *http.Client) {
 			return
 		}
 	})
+	http.HandleFunc("/state", func(w http.ResponseWriter, r *http.Request) {
+		err := api.PostState(client, w)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	})
 	http.HandleFunc("/oidc_rp", func(w http.ResponseWriter, r *http.Request) {
 		err := api.GetOidcRp(client, w)
 		if err != nil {
