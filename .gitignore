@@ -1,0 +1,6 @@
+/tmp
+*.pfx
+*.crt
+*.cer
+.env
+*.exe
